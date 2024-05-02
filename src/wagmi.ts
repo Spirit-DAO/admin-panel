@@ -1,4 +1,4 @@
-import { fantomTestnet } from 'viem/chains'
+import { fantom } from 'viem/chains'
 import { configureChains, createConfig } from 'wagmi'
 import { InjectedConnector } from 'wagmi/connectors/injected'
 import { MetaMaskConnector } from 'wagmi/connectors/metaMask'
@@ -7,7 +7,7 @@ import { WalletConnectConnector } from 'wagmi/connectors/walletConnect'
 import { publicProvider } from 'wagmi/providers/public'
 
 const { chains, publicClient, webSocketPublicClient } = configureChains(
-  [fantomTestnet],
+  [fantom],
   [
     publicProvider(),
   ],
