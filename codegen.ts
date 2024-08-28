@@ -1,11 +1,13 @@
+import { config as dotenvConfig } from 'dotenv';
 
+dotenvConfig();
 import type { CodegenConfig } from '@graphql-codegen/cli';
 
 const config: CodegenConfig = {
   overwrite: true,
   schema: [
-    "https://api.thegraph.com/subgraphs/name/iliaazhel/integral-core",
-    "https://api.thegraph.com/subgraphs/name/iliaazhel/farming-test"
+    process.env.VITE_INFO_GRAPH!,
+    process.env.VITE_FARMS_GRAPH!
   ],
   documents: "src/graphql/queries/!(*.d).{ts,tsx}",
   generates: {
