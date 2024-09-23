@@ -9,9 +9,11 @@ import { ApprovalState } from "@/types/approve-state"
 import { PartialIncentiveKey } from "@/types/incentive-key"
 import { IRewards } from "@/types/rewards"
 import { tryParseAmount } from "@cryptoalgebra/integral-sdk"
-import { useEffect } from "react"
+import { useEffect, useState, useCallback } from "react"
 import { useNavigate } from "react-router-dom"
-import { useContractWrite, usePrepareContractWrite } from "wagmi"
+import { Address } from "wagmi"
+import { encodeFunctionData } from "viem"
+import { sendTransaction } from "wagmi/actions"
 
 interface ICreateFarmButton {
     hasSecondReward: boolean;
@@ -49,31 +51,47 @@ const CreateFarmButton = ({
     const showApproveReward = approvalStateReward === ApprovalState.NOT_APPROVED || approvalStateReward === ApprovalState.PENDING
     const showApproveBonusReward = approvalStateBonusReward === ApprovalState.NOT_APPROVED || approvalStateBonusReward === ApprovalState.PENDING
 
-    const { config } = usePrepareContractWrite({
-        address: ALGEBRA_ETERNAL_FARMING,
-        abi: eternalFarmingABI,
-        functionName: 'createEternalFarming',
-        args: isKeyReady && areRewardsReady && !showApproveReward && !showApproveBonusReward ? [
-            { 
+    const calldata =
+      isKeyReady &&
+      areRewardsReady &&
+      !showApproveReward &&
+      !showApproveBonusReward
+        ? encodeFunctionData({
+            abi: eternalFarmingABI,
+            functionName: "createEternalFarming",
+            args: [
+              {
                 rewardToken,
-                bonusRewardToken: bonusRewardToken || '0x0000000000000000000000000000000000000000',
+                bonusRewardToken:
+                  bonusRewardToken ||
+                  "0x0000000000000000000000000000000000000000",
                 pool,
-                nonce: BigInt(nonce)
-            },
-            {
+                nonce: BigInt(nonce),
+              },
+              {
                 reward: rewardBn,
                 rewardRate: rewardRateBn,
                 bonusReward: bonusRewardBn || 0n,
                 bonusRewardRate: bonusRewardRateBn || 0n,
-                minimalPositionWidth: 0
-            },
-            plugin
-        ] : undefined
-    })
+                minimalPositionWidth: 0,
+              },
+              plugin,
+            ],
+          })
+        : undefined;
 
-    const { data, write: onCreate } = useContractWrite(config)
+    const [hash, setHash] = useState<Address>();
 
-    const { isLoading, isSuccess } = useTransitionAwait(data?.hash, `Create Farm`)
+    const onCreate = useCallback(() => {
+      if (!calldata) return;
+
+      sendTransaction({
+        data: calldata,
+        to: ALGEBRA_ETERNAL_FARMING,
+      }).then((v) => setHash(v.hash));
+    }, [calldata]);
+
+    const { isLoading, isSuccess } = useTransitionAwait(hash, `Create Farm`)
 
     useEffect(() => {
         if (isSuccess) {
