@@ -6613,8 +6613,8 @@ export function useAllFarmsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<A
           const options = {...defaultOptions, ...baseOptions}
           return Apollo.useLazyQuery<AllFarmsQuery, AllFarmsQueryVariables>(AllFarmsDocument, options);
         }
-export function useAllFarmsSuspenseQuery(baseOptions?: Apollo.SuspenseQueryHookOptions<AllFarmsQuery, AllFarmsQueryVariables>) {
-          const options = {...defaultOptions, ...baseOptions}
+export function useAllFarmsSuspenseQuery(baseOptions?: Apollo.SkipToken | Apollo.SuspenseQueryHookOptions<AllFarmsQuery, AllFarmsQueryVariables>) {
+          const options = baseOptions === Apollo.skipToken ? baseOptions : {...defaultOptions, ...baseOptions}
           return Apollo.useSuspenseQuery<AllFarmsQuery, AllFarmsQueryVariables>(AllFarmsDocument, options);
         }
 export type AllFarmsQueryHookResult = ReturnType<typeof useAllFarmsQuery>;
@@ -6653,8 +6653,8 @@ export function useSingleFarmingLazyQuery(baseOptions?: Apollo.LazyQueryHookOpti
           const options = {...defaultOptions, ...baseOptions}
           return Apollo.useLazyQuery<SingleFarmingQuery, SingleFarmingQueryVariables>(SingleFarmingDocument, options);
         }
-export function useSingleFarmingSuspenseQuery(baseOptions?: Apollo.SuspenseQueryHookOptions<SingleFarmingQuery, SingleFarmingQueryVariables>) {
-          const options = {...defaultOptions, ...baseOptions}
+export function useSingleFarmingSuspenseQuery(baseOptions?: Apollo.SkipToken | Apollo.SuspenseQueryHookOptions<SingleFarmingQuery, SingleFarmingQueryVariables>) {
+          const options = baseOptions === Apollo.skipToken ? baseOptions : {...defaultOptions, ...baseOptions}
           return Apollo.useSuspenseQuery<SingleFarmingQuery, SingleFarmingQueryVariables>(SingleFarmingDocument, options);
         }
 export type SingleFarmingQueryHookResult = ReturnType<typeof useSingleFarmingQuery>;
@@ -6693,8 +6693,8 @@ export function useAllDepositsOnFarmingLazyQuery(baseOptions?: Apollo.LazyQueryH
           const options = {...defaultOptions, ...baseOptions}
           return Apollo.useLazyQuery<AllDepositsOnFarmingQuery, AllDepositsOnFarmingQueryVariables>(AllDepositsOnFarmingDocument, options);
         }
-export function useAllDepositsOnFarmingSuspenseQuery(baseOptions?: Apollo.SuspenseQueryHookOptions<AllDepositsOnFarmingQuery, AllDepositsOnFarmingQueryVariables>) {
-          const options = {...defaultOptions, ...baseOptions}
+export function useAllDepositsOnFarmingSuspenseQuery(baseOptions?: Apollo.SkipToken | Apollo.SuspenseQueryHookOptions<AllDepositsOnFarmingQuery, AllDepositsOnFarmingQueryVariables>) {
+          const options = baseOptions === Apollo.skipToken ? baseOptions : {...defaultOptions, ...baseOptions}
           return Apollo.useSuspenseQuery<AllDepositsOnFarmingQuery, AllDepositsOnFarmingQueryVariables>(AllDepositsOnFarmingDocument, options);
         }
 export type AllDepositsOnFarmingQueryHookResult = ReturnType<typeof useAllDepositsOnFarmingQuery>;
@@ -6733,8 +6733,8 @@ export function useActiveFarmingForPoolLazyQuery(baseOptions?: Apollo.LazyQueryH
           const options = {...defaultOptions, ...baseOptions}
           return Apollo.useLazyQuery<ActiveFarmingForPoolQuery, ActiveFarmingForPoolQueryVariables>(ActiveFarmingForPoolDocument, options);
         }
-export function useActiveFarmingForPoolSuspenseQuery(baseOptions?: Apollo.SuspenseQueryHookOptions<ActiveFarmingForPoolQuery, ActiveFarmingForPoolQueryVariables>) {
-          const options = {...defaultOptions, ...baseOptions}
+export function useActiveFarmingForPoolSuspenseQuery(baseOptions?: Apollo.SkipToken | Apollo.SuspenseQueryHookOptions<ActiveFarmingForPoolQuery, ActiveFarmingForPoolQueryVariables>) {
+          const options = baseOptions === Apollo.skipToken ? baseOptions : {...defaultOptions, ...baseOptions}
           return Apollo.useSuspenseQuery<ActiveFarmingForPoolQuery, ActiveFarmingForPoolQueryVariables>(ActiveFarmingForPoolDocument, options);
         }
 export type ActiveFarmingForPoolQueryHookResult = ReturnType<typeof useActiveFarmingForPoolQuery>;
@@ -6773,8 +6773,8 @@ export function useSinglePoolLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions
           const options = {...defaultOptions, ...baseOptions}
           return Apollo.useLazyQuery<SinglePoolQuery, SinglePoolQueryVariables>(SinglePoolDocument, options);
         }
-export function useSinglePoolSuspenseQuery(baseOptions?: Apollo.SuspenseQueryHookOptions<SinglePoolQuery, SinglePoolQueryVariables>) {
-          const options = {...defaultOptions, ...baseOptions}
+export function useSinglePoolSuspenseQuery(baseOptions?: Apollo.SkipToken | Apollo.SuspenseQueryHookOptions<SinglePoolQuery, SinglePoolQueryVariables>) {
+          const options = baseOptions === Apollo.skipToken ? baseOptions : {...defaultOptions, ...baseOptions}
           return Apollo.useSuspenseQuery<SinglePoolQuery, SinglePoolQueryVariables>(SinglePoolDocument, options);
         }
 export type SinglePoolQueryHookResult = ReturnType<typeof useSinglePoolQuery>;
@@ -6812,8 +6812,8 @@ export function useAllPoolsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<A
           const options = {...defaultOptions, ...baseOptions}
           return Apollo.useLazyQuery<AllPoolsQuery, AllPoolsQueryVariables>(AllPoolsDocument, options);
         }
-export function useAllPoolsSuspenseQuery(baseOptions?: Apollo.SuspenseQueryHookOptions<AllPoolsQuery, AllPoolsQueryVariables>) {
-          const options = {...defaultOptions, ...baseOptions}
+export function useAllPoolsSuspenseQuery(baseOptions?: Apollo.SkipToken | Apollo.SuspenseQueryHookOptions<AllPoolsQuery, AllPoolsQueryVariables>) {
+          const options = baseOptions === Apollo.skipToken ? baseOptions : {...defaultOptions, ...baseOptions}
           return Apollo.useSuspenseQuery<AllPoolsQuery, AllPoolsQueryVariables>(AllPoolsDocument, options);
         }
 export type AllPoolsQueryHookResult = ReturnType<typeof useAllPoolsQuery>;
@@ -6852,8 +6852,8 @@ export function useSingleTokenLazyQuery(baseOptions?: Apollo.LazyQueryHookOption
           const options = {...defaultOptions, ...baseOptions}
           return Apollo.useLazyQuery<SingleTokenQuery, SingleTokenQueryVariables>(SingleTokenDocument, options);
         }
-export function useSingleTokenSuspenseQuery(baseOptions?: Apollo.SuspenseQueryHookOptions<SingleTokenQuery, SingleTokenQueryVariables>) {
-          const options = {...defaultOptions, ...baseOptions}
+export function useSingleTokenSuspenseQuery(baseOptions?: Apollo.SkipToken | Apollo.SuspenseQueryHookOptions<SingleTokenQuery, SingleTokenQueryVariables>) {
+          const options = baseOptions === Apollo.skipToken ? baseOptions : {...defaultOptions, ...baseOptions}
           return Apollo.useSuspenseQuery<SingleTokenQuery, SingleTokenQueryVariables>(SingleTokenDocument, options);
         }
 export type SingleTokenQueryHookResult = ReturnType<typeof useSingleTokenQuery>;
@@ -6891,8 +6891,8 @@ export function useAllTokensLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<
           const options = {...defaultOptions, ...baseOptions}
           return Apollo.useLazyQuery<AllTokensQuery, AllTokensQueryVariables>(AllTokensDocument, options);
         }
-export function useAllTokensSuspenseQuery(baseOptions?: Apollo.SuspenseQueryHookOptions<AllTokensQuery, AllTokensQueryVariables>) {
-          const options = {...defaultOptions, ...baseOptions}
+export function useAllTokensSuspenseQuery(baseOptions?: Apollo.SkipToken | Apollo.SuspenseQueryHookOptions<AllTokensQuery, AllTokensQueryVariables>) {
+          const options = baseOptions === Apollo.skipToken ? baseOptions : {...defaultOptions, ...baseOptions}
           return Apollo.useSuspenseQuery<AllTokensQuery, AllTokensQueryVariables>(AllTokensDocument, options);
         }
 export type AllTokensQueryHookResult = ReturnType<typeof useAllTokensQuery>;

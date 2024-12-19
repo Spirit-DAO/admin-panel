@@ -1,4 +1,4 @@
-import { fantom } from 'viem/chains'
+import { sonic } from 'viem/chains'
 import { configureChains, createConfig } from 'wagmi'
 import { InjectedConnector } from 'wagmi/connectors/injected'
 import { MetaMaskConnector } from 'wagmi/connectors/metaMask'
@@ -7,7 +7,7 @@ import { WalletConnectConnector } from 'wagmi/connectors/walletConnect'
 import { publicProvider } from 'wagmi/providers/public'
 
 const { chains, publicClient, webSocketPublicClient } = configureChains(
-  [fantom],
+  [sonic],
   [
     publicProvider(),
   ],
@@ -17,7 +17,7 @@ export const config = createConfig({
   autoConnect: true,
   connectors: [
     new MetaMaskConnector({ chains }),
-    new WalletConnectConnector({ chains, options: { projectId: import.meta.env.VITE_WALLETCONNECT_PROJECT_ID, metadata: { name: 'Algebra Integral Admin Panel', description: 'Admin Panel', url: 'https://admin.algebra.finance', icons: [''] }  } }),
+    new WalletConnectConnector({ chains, options: { projectId: import.meta.env.VITE_WALLETCONNECT_PROJECT_ID, metadata: { name: 'Algebra Integral Admin Panel', description: 'Admin Panel', url: 'https://admin.silverswap.io', icons: [''] }  } }),
     new InjectedConnector({
       chains,
       options: {
